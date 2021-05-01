@@ -62,8 +62,32 @@ if __name__ == "__main__":
     'SIGNALS': 'sell', 
     'POSITION_SIZE': 0.000279}
 
-    msg = ReceiveSignals(signal_data_dict=data)
+    #msg = ReceiveSignals(signal_data_dict=data)
 
+    # from DB.Firebasedb import GetInitialValue , WriteInitialValue
+
+
+    # #WriteInitialValue(symbols="XRP",initialvalue=25)
+    # res = GetInitialValue(symbols="ETH")
+    # print(res)
+
+    # from RebalanceBot.Rebalance import rebalanceAsset
+    # rebalanceAsset(symbols="DOGE")
+    from RebalanceBot.Rebalance import RebalanceBot
+    bot = RebalanceBot(interval=5,coins_list=["XRP","DOGE","BTC","ETH"])
+    import threading
+    bot_bg = threading.Thread(target=bot.run,daemon=True)
+    bot_bg.start()
+
+    while True:
+        if input("PRESS ENTER TO STOP"):
+            bot.pause()
+            if input("PRESS ENTER TO RESUME"):
+                bot.resume()
+        
+        if input("X to kill bot") == "X":
+            bot.kill()
+            break
 
 
     # if data["SIGNALS"] == "sell":
@@ -76,6 +100,6 @@ if __name__ == "__main__":
     #     print(data["POSITION_SIZE"])
     #     print("\n" + "BUY NOW")
 
-    #order = BUY(symbol="BTCUSDT",position_size=0.0003)
+    # order = BUY(symbol="DOGEUSDT",position_size=42.8)
     # order = SELL(symbol="BTCUSDT")
     # print(order)
