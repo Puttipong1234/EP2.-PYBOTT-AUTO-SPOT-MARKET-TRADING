@@ -12,12 +12,13 @@ firebaseConfig = {
     "messagingSenderId": "966280251835",
     "appId": "1:966280251835:web:a9ceef709f806fee8cdc9e",
     "measurementId": "G-KN2EG9DBH4",
-    "databaseURL": os.getenv("FirebaseDatabaseURL")
+    "databaseURL": os.getenv("FirebaseDatabaseURL"),
+    "serviceAccount": "pybot-bottrade-firebase-adminsdk-9em5u-123a2cfc0e.json" # นำไฟล์ของท่านมาใส่เองด้วย
   }
 
 firebaseCleint = Firebase(firebaseConfig)
 auth = firebaseCleint.auth()
-user = auth.sign_in_with_email_and_password(os.getenv("FIREBASE_EMAIL_AUTH"), os.getenv("FIREBASE_PASSWORD"))
+# user = auth.sign_in_with_email_and_password(os.getenv("FIREBASE_EMAIL_AUTH"), os.getenv("FIREBASE_PASSWORD"))
 
 #ทดสอบ
 if __name__ == '__main__':
