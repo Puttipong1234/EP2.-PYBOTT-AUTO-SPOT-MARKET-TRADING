@@ -79,13 +79,25 @@ if __name__ == "__main__":
     bot_bg = threading.Thread(target=bot.run,daemon=True)
     bot_bg.start()
 
-    while True:
-        if input("PRESS ENTER TO STOP"):
-            bot.pause()
-            if input("PRESS ENTER TO RESUME"):
-                bot.resume()
+    #  option 1 อันเก่าตามในคลิบเขียนแบบนี้
+    # while True:
+    #     if input("PRESS ENTER TO STOP"):
+    #         bot.pause()
+    #         if input("PRESS ENTER TO RESUME"):
+    #             bot.resume()
         
-        if input("X to kill bot") == "X":
+    #     if input("X to kill bot") == "X":
+    #         bot.kill()
+    #         break
+
+    # option 2 เขียนอีกแบบเข้าใจง่ายกว่าครับ
+    while True:
+        r = input("1 to stop , 2 to resume , 3 to kill") # รับค่าจาก user ผ่าน cmd
+        if r == "1": # 1 หยุดบอทชั่วคราว
+            bot.pause()
+        elif r == "2": # 2 ทำต่อ
+            bot.resume()
+        elif r == "3": # 3 หยุดบอท
             bot.kill()
             break
 

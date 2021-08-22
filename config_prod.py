@@ -18,6 +18,8 @@ firebaseConfig = {
 
 firebaseCleint = Firebase(firebaseConfig)
 auth = firebaseCleint.auth()
+# ใช้ Service account .json ในการ authenticate as admin ได้เลย
+# สามารถดูตามวิดิโอในกลุ่มนะคับ
 # user = auth.sign_in_with_email_and_password(os.getenv("FIREBASE_EMAIL_AUTH"), os.getenv("FIREBASE_PASSWORD"))
 
 #ทดสอบ
